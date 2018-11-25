@@ -42,7 +42,7 @@ export class Layout extends React.Component {
           <ListItemIcon><AccountCircle /></ListItemIcon>
           <ListItemText primary={auth.user.displayName} secondary={auth.user.email} />
         </ListItem>
-        <Link to={{ pathname: '/logout', state: { from: location} }}>
+        <Link to={{ pathname: '/logout', state: { from: location} }} className={classes.link}>
           <ListItem button>
             <ListItemIcon><LogoutIcon /></ListItemIcon>
             <ListItemText primary="Logout" />

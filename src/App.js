@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dashboard from './Dashboard/Dashboard.page';
+import StudentList from './Students/List/List.page';
 import Login from './Auth/Login/Login.page';
 import Logout from './Auth/Logout';
 import NotFound from './404';
@@ -20,7 +21,8 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
-            <PrivateRoute path="/" component={Dashboard} user={this.props.auth.user} />
+            <Route path="/alumnos/lista" exact component={StudentList} />
+            <PrivateRoute path="/" exact component={Dashboard} user={this.props.auth.user} />
             <Route component={NotFound} />
           </Switch>
         </Router>
