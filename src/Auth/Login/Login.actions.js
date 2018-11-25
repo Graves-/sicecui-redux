@@ -16,6 +16,7 @@ export const login = () => dispatch => {
   });
 
   firebaseAuth.signInWithPopup(googleAuthProvider).then(user => {
+    localStorage.setItem('_a', JSON.stringify(user));
     dispatch({
       type: loginActions.LOGIN_SUCCESS,
     });
@@ -33,6 +34,7 @@ export const logout = () => dispatch => {
   });
 
   firebaseAuth.signOut().then(() => {
+    localStorage.removeItem('_a');
     dispatch({
       type: loginActions.LOGOUT_SUCCESS
     });

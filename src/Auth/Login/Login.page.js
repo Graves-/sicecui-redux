@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { login, logout } from './Login.actions';
+import { login } from './Login.actions';
 import LoginContainer from './Login.container';
 
 export class LoginPage extends Component {
@@ -13,8 +14,7 @@ export class LoginPage extends Component {
 const mapStateToProps = state => ({ auth: state.login });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ 
-  onLoginClick: login,
-  onLogoutClick: logout
+  onLoginClick: login
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginPage));

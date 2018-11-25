@@ -1,7 +1,15 @@
 import { loginActions  } from './Login.actions';
 
+const retreiveUser = () => {
+  const userFromLocalStorage = localStorage.getItem('_a');
+
+  if(userFromLocalStorage === null) return null;
+  return JSON.parse(userFromLocalStorage);
+}
+
+
 const initialState = {
-  user: null,
+  user: retreiveUser(),
   loading: false,
   error: null
 };

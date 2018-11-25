@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import Dashboard from './Dashboard/Dashboard.page';
 import Login from './Auth/Login/Login.page';
+import Logout from './Auth/Logout';
 import { connect } from 'react-redux';
 import { fetchUser } from './Auth/Login/Login.actions';
+import { Route } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
   componentDidMount(){
@@ -9,12 +13,18 @@ class App extends Component {
   }
 
   render() {
-    return (
+;    return (
       <div className="App">
-        <Login />
+        <Route path="/login" exact component={Login} />
+        <Route path="/logout" exact component={Logout} />
+        <PrivateRoute path="/" component={Dashboard} user={this.props.auth.user} />
       </div>
     );
   }
 }
 
-export default connect(null, { fetchUser })(App);
+const mapStateToProps = state => ({
+  auth: state.login
+});
+
+export default connect(mapStateToProps, { fetchUser })(App);
