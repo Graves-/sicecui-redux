@@ -20,7 +20,7 @@ export class LoginContainer extends Component {
     return (
       <div className={classes.main}>
         <Paper className={classes.paper} elevation={3}>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="headline">
             Sign in
           </Typography>
           {/* <form className={classes.form}>

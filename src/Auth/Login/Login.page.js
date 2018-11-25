@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   onLoginClick: login
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginPage));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginPage));

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Dashboard from './Dashboard/Dashboard.page';
 import Login from './Auth/Login/Login.page';
 import Logout from './Auth/Logout';
+import NotFound from './404';
 import { connect } from 'react-redux';
 import { fetchUser } from './Auth/Login/Login.actions';
-import { Route } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
 class App extends Component {
@@ -15,9 +16,14 @@ class App extends Component {
   render() {
 ;    return (
       <div className="App">
-        <Route path="/login" exact component={Login} />
-        <Route path="/logout" exact component={Logout} />
-        <PrivateRoute path="/" component={Dashboard} user={this.props.auth.user} />
+        <Router>
+          <Switch>
+            <Route path="/login" exact component={Login} />
+            <Route path="/logout" exact component={Logout} />
+            <PrivateRoute path="/" component={Dashboard} user={this.props.auth.user} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
       </div>
     );
   }
