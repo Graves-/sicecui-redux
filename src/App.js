@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Dashboard from './Dashboard/Dashboard.page';
 import Login from './Auth/Login/Login.page';
 import Logout from './Auth/Logout';
+import StudentForm from './Student/Form/Form.page';
 import NotFound from './404';
 import { connect } from 'react-redux';
 import { fetchUser } from './Auth/Login/Login.actions';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
+import Layout from './Layout/Layout.page';
 
 class App extends Component {
   componentDidMount(){
@@ -20,7 +22,10 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
-            <PrivateRoute path="/" component={Dashboard} user={this.props.auth.user} />
+            <Layout>
+              <Route path="/alumnos/registro" exact component={StudentForm} />
+              <PrivateRoute path="/" component={Dashboard} user={this.props.auth.user} />
+            </Layout>
             <Route component={NotFound} />
           </Switch>
         </Router>
